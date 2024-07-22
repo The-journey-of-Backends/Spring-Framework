@@ -11,7 +11,12 @@ public class MemberService {
 
     // 서비스 repository는 비지니스에 가까운 용어를 작성해야 한다.
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    // MemberRepository를 외부에서 넣어줄 수 있게 바꿔줌
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     // 회원가입
     public Long join(Member member) {
