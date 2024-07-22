@@ -22,7 +22,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-	compileOnly 'org.projectlombok:lombok:1.18.20' // or the latest version
+	compileOnly 'org.projectlombok:lombok:1.18.20' // 버전은 최신으로 변경 가능
 	annotationProcessor 'org.projectlombok:lombok:1.18.20'
 }
 
