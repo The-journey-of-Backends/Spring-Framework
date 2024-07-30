@@ -1,5 +1,7 @@
 package springframe.Initial_spring.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import springframe.Initial_spring.domain.Member;
 import springframe.Initial_spring.repository.MemberRepository;
 import springframe.Initial_spring.repository.MemoryMemberRepository;
@@ -7,12 +9,14 @@ import springframe.Initial_spring.repository.MemoryMemberRepository;
 import java.util.List;
 import java.util.Optional;
 
+//@Service
 public class MemberService {
 
     // 서비스 repository는 비지니스에 가까운 용어를 작성해야 한다.
 
     private final MemberRepository memberRepository;
 
+//    @Autowired
     // MemberRepository를 외부에서 넣어줄 수 있게 바꿔줌
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
