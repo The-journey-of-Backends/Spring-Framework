@@ -12,9 +12,9 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringConfig {
 
-    // DataSource는 데이터베이스 커넥션을 획들할 때 사용하는 객체입니다.
+    // DataSource는 데이터베이스 커넥션을 획득할 때 사용하는 객체입니다.
     // 스프링 부트는 데이터베이스 커넥션 정보를 바탕으로 DataSource를 생성하고 스프링 빈으로 만들어둡니다.
-    // 그래서 Di를 받을 수 있습니다.
+    // 그래서 DI를 받을 수 있습니다.
     private final DataSource dataSource;
 
     public SpringConfig(DataSource dataSource) {
