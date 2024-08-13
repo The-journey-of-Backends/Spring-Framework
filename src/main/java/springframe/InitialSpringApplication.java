@@ -1,4 +1,4 @@
-package springframe.Initial_spring;
+package springframe;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
