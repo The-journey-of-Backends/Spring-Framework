@@ -44,15 +44,19 @@ public class JdbcTemplateMemberRepository implements MemberRepository{
 
     @Override
     public Optional<Member> findByUsername(String username) {
-        return Optional.empty();
+        // mapping 하면 객체 생성은 RowMapper를 통해서 callback으로 정의가 된다.
+
+        List<Member> result = jdbcTemplate.query("select * from member where id=?", memberRowMapper());
+        return result.stream().findAny();
     }
 
     @Override
     public List<Member> findAll() {
-        return List.of();
+        return jdbcTemplate.query("select * from member",memberRowMapper());
     }
 
     private RowMapper<Member> memberRowMapper(){
+        // Member가 생성되서 넘어감
         return (rs, rowNum) -> {
             Member member = new Member();
             member.setId(rs.getLong("id"));
