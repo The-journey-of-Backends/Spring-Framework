@@ -1,6 +1,7 @@
 package springframe.Initial_spring.config;
 
 import jakarta.persistence.EntityManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springframe.Initial_spring.repository.*;
@@ -15,23 +16,26 @@ public class SpringConfig {
     // 스프링 부트는 데이터베이스 커넥션 정보를 바탕으로 DataSource를 생성하고 스프링 빈으로 만들어둡니다.
     // 그래서 DI를 받을 수 있습니다.
     private final DataSource dataSource;
+    private final MemberRepository memberRepository;
     private EntityManager em;
 
-    public SpringConfig(DataSource dataSource, EntityManager em) {
+    @Autowired 
+    public SpringConfig(DataSource dataSource, EntityManager em, MemberRepository memberRepository) {
         this.dataSource = dataSource;
         this.em = em;
+        this.memberRepository = memberRepository;
     }
 
     @Bean
     public MemberService memberService(){
-        return new MemberService(memberRepository());
+        return new MemberService(memberRepository);
     }
 
-    @Bean
-    public MemberRepository memberRepository(){
+//    @Bean
+//    public MemberRepository memberRepository(){
 //        return new MemoryMemberRepository();
 //        return new JdbcMemberRepository(dataSource);
 //        return new JdbcTemplateMemberRepository(dataSource);
-        return new JpaMemberRepository(em);
-    }
+//        return new JpaMemberRepository(em);
+//    }
 }
