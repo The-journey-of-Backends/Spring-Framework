@@ -41,11 +41,14 @@ public class JdbcTemplateMemberRepository implements MemberRepository{
     }
 
     private RowMapper<Member> memberRowMapper(){
-        return (rs, rowNum) -> {
-            Member member = new Member();
-            member.setId(rs.getLong("id"));
-            member.setName(rs.getString("name"));
-            return member;
-        };
+        return new RowMapper<Member>(){
+            @Override
+            public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
+                Member member = new Member();
+                member.setId(rs.getLong("id"));
+                member.setName(rs.getString("name"));
+                return member;
+            }
+        }
     }
 }
