@@ -46,7 +46,7 @@ public class JdbcTemplateMemberRepository implements MemberRepository{
     public Optional<Member> findByUsername(String username) {
         // mapping 하면 객체 생성은 RowMapper를 통해서 callback으로 정의가 된다.
 
-        List<Member> result = jdbcTemplate.query("select * from member where id=?", memberRowMapper());
+        List<Member> result = jdbcTemplate.query("select * from member where name=?", memberRowMapper(), username);
         return result.stream().findAny();
     }
 
