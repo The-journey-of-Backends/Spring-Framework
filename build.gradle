@@ -21,13 +21,12 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc' //	자바는 기본적으로 DB랑 붙으려면 이 jdbc 드라이버가 꼭 있어야 된다.
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	runtimeOnly 'com.h2database:h2' // db랑 붙을 때 데이터베이스가 제공하는 클라이언트가 필요한데, 여기서는 h2 데이터베이스를 활용합니다.
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	compileOnly 'org.projectlombok:lombok:1.18.20' // 버전은 최신으로 변경 가능
 	annotationProcessor 'org.projectlombok:lombok:1.18.20'
-
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 }
 
 tasks.named('test') {
