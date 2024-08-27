@@ -23,24 +23,24 @@ public class MemberServiceIntegrationTest {
     public void 회원가입() throws Exception {
         //given : hello라는 값이 주어졌을 떄
         Member member = new Member();
-        member.setName("hello");
+        member.setUsername("hello");
 
         //when : join이라는 가입 기능을 실행 했을 때
         Long saveId = memberService.join(member);
 
         //then : 이름이 일치하는지 결과 확인
         Member findMember = memberRepository.findById(saveId).get();
-        assertEquals(member.getName(), findMember.getName());
+        assertEquals(member.getUsername(), findMember.getUsername());
     }
 
     @Test
     public void 중복_회원_예외() throws Exception {
         //Given : 동일한 이름을 가진 두 회원 객체를 생성
         Member member1 = new Member();
-        member1.setName("spring");
+        member1.setUsername("spring");
 
         Member member2 = new Member();
-        member2.setName("spring");
+        member2.setUsername("spring");
 
         //When : 첫 번째 회원을 가입시키고, 두 번째 회원 가입 시 예외 발생을 검증
         memberService.join(member1);
