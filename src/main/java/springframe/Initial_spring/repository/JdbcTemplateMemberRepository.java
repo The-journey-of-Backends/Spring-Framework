@@ -44,7 +44,7 @@ public class JdbcTemplateMemberRepository implements MemberRepository{
         return (rs, rowNum) -> {
             Member member = new Member();
             member.setId(rs.getLong("id"));
-            member.setName(rs.getString("name"));
+            member.setUsername(rs.getString("name"));
             return member;
         };
     }

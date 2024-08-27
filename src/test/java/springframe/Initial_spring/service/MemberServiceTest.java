@@ -30,24 +30,24 @@ class MemberServiceTest {
     void 회원가입() {
         // given : 무엇인가 주어졌는데
         Member member = new Member();
-        member.setName("Hello");
+        member.setUsername("Hello");
 
         // when : 이 코드를 실행 했을 때
         Long saveId = memberService.join(member);
 
         // then : 결과가 이게 나와야 해
         Member findMember = memberService.findMember(saveId).get();
-        Assertions.assertThat(member.getName()).isEqualTo(findMember.getName());
+        Assertions.assertThat(member.getUsername()).isEqualTo(findMember.getUsername());
     }
 
     @Test
     public void 중복_회원_예외(){ // 이전 작성한 예외 처리 잘 되는지 확인
         // given
         Member member1 = new Member();
-        member1.setName("Spring");
+        member1.setUsername("Spring");
 
         Member member2 = new Member();
-        member2.setName("Spring");
+        member2.setUsername("Spring");
 
         // when
         memberService.join(member1);
