@@ -22,7 +22,7 @@ class MemoryMemberRepositoryTest {
     @Test
     public void save(){
         Member member = new Member();
-        member.setName("yuchan");
+        member.setUsername("yuchan");
 
         memoryMemberRepository.save(member);
 
@@ -33,11 +33,11 @@ class MemoryMemberRepositoryTest {
     @Test
     public void findById(){
         Member member1 = new Member();
-        member1.setName("yuchan1");
+        member1.setUsername("yuchan1");
         memoryMemberRepository.save(member1);
 
         Member member2 = new Member();
-        member2.setName("yuchan2");
+        member2.setUsername("yuchan2");
         memoryMemberRepository.save(member2);
 
         Member result = memoryMemberRepository.findByUsername("yuchan2").get();
@@ -47,11 +47,11 @@ class MemoryMemberRepositoryTest {
     @Test
     public void findAll(){
         Member member1 = new Member();
-        member1.setName("yuchan1");
+        member1.setUsername("yuchan1");
         memoryMemberRepository.save(member1);
 
         Member member2 = new Member();
-        member2.setName("yuchan2");
+        member2.setUsername("yuchan2");
         memoryMemberRepository.save(member2);
 
         List<Member> members = memoryMemberRepository.findAll();

@@ -27,14 +27,23 @@ public class MemberService {
     // 회원가입
     public Long join(Member member) {
 
-        //같은 이름이 있는 중복 회원x
-        validateDuplicateMember(member); //중복 회원 검증
-        memberRepository.save(member);
-        return member.getId();
+        long start = System.currentTimeMillis();
+
+        try{
+            //같은 이름이 있는 중복 회원x
+            validateDuplicateMember(member); //중복 회원 검증
+            memberRepository.save(member);
+            return member.getId();
+        }finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = finish - start;
+            System.out.println("timeMs = " + timeMs);
+
+        }
     }
 
     private void validateDuplicateMember(Member member) {
-        memberRepository.findByUsername(member.getName()) //findByUsername을 빼주고 이 값은 Optional이기 때문에
+        memberRepository.findByUsername(member.getUsername()) //findByUsername을 빼주고 이 값은 Optional이기 때문에
             .ifPresent(member1 -> { // 바로 ifPresent에 반환
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         });

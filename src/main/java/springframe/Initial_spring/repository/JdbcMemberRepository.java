@@ -28,7 +28,7 @@ public class JdbcMemberRepository implements MemberRepository {
         try {
             conn = getConnection();
             ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, member.getName());
+            ps.setString(1, member.getUsername());
             ps.executeUpdate();
             rs = ps.getGeneratedKeys();
 
@@ -60,7 +60,7 @@ public class JdbcMemberRepository implements MemberRepository {
             if (rs.next()) {
                 Member member = new Member();
                 member.setId(rs.getLong("id"));
-                member.setName(rs.getString("name"));
+                member.setUsername(rs.getString("name"));
                 return Optional.of(member);
             } else {
                 return Optional.empty();
@@ -86,7 +86,7 @@ public class JdbcMemberRepository implements MemberRepository {
             if(rs.next()) {
                 Member member = new Member();
                 member.setId(rs.getLong("id"));
-                member.setName(rs.getString("name"));
+                member.setUsername(rs.getString("name"));
                 return Optional.of(member);
             }
             return Optional.empty();
@@ -111,7 +111,7 @@ public class JdbcMemberRepository implements MemberRepository {
             while(rs.next()) {
                 Member member = new Member();
                 member.setId(rs.getLong("id"));
-                member.setName(rs.getString("name"));
+                member.setUsername(rs.getString("name"));
                 members.add(member);
             }
             return members;
@@ -135,7 +135,7 @@ public class JdbcMemberRepository implements MemberRepository {
             if (rs.next()) {
                 Member member = new Member();
                 member.setId(rs.getLong("id"));
-                member.setName(rs.getString("name"));
+                member.setUsername(rs.getString("name"));
                 return Optional.of(member);
             }
             return Optional.empty();
